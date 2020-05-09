@@ -22,10 +22,10 @@ var num = "1234567890"
 
 var speChar = ["!","#", "$", "%", "&", "*", "+", "-", 
             ".", "<", "=", ">", "?", "@", "^", "_", "~"]
-var NewSpeChar = speChar.join()
+var NewSpeChar = speChar.join("")
 
 //prompts for password criteria when user clicks generate password
-function generatePassword() {
+function generatePassword(pass) {
     passLength();
     var confirmUpper = confirm("Would you like to include uppercase letters?");
     var confirmLower = confirm("Would you like to include lowercase letters?");
@@ -44,6 +44,18 @@ function generatePassword() {
     if (confirmSpeChar) {
         appendCriteria(NewSpeChar);
     }
+    //takes criteria and randomizes
+    pass = getPass();
+    
+}
+var pass = "";
+function getPass (){
+    
+    for (i = 1; i <= length; i++) {
+        var char = Math.floor(Math.random() * charset.length + 1);
+        pass += charset.charAt(char)
+    }
+    return pass;
 }
 
 //this function determines the length of password by user prompt
@@ -61,14 +73,11 @@ function passLength() {
 }
 
 //this function adds criteria to the generator if confirmed by user
-
+var charset = ""
 function appendCriteria(criteria) {
-    var charset = ""
     charset = charset + criteria;
     return charset;
 }
-
-
 
 
 
