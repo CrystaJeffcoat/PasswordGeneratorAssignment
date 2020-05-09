@@ -14,6 +14,6 @@ Week 3 homework assignment
 
 link to webpage: https://crystajeffcoat.github.io/PasswordGeneratorAssignment/
 
-the following image demonstrates the application functionality:
+image in assets folder demonstrates the application functionality
 
-(./assets/passwordGenerator)
+
