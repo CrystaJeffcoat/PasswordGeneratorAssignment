@@ -1,5 +1,13 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var length = 0
+var passCriteria = [];
+
+//password criteria 
+var lower = "abcdefghijklmnopqrstuvwxyz"
+var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var num = "1234567890"
+var speChar = "!#$%&*+-.<=>?@^_~" 
 
 // Write password to the #password input
 function writePassword() {
@@ -10,57 +18,43 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-//password criteria 
-var lower = "abcdefghijklmnopqrstuvwxyz"
-
-var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-var num = "1234567890"
-
-var speChar = ["!","#", "$", "%", "&", "*", "+", "-", 
-            ".", "<", "=", ">", "?", "@", "^", "_", "~"]
-var NewSpeChar = speChar.join("")
-
 //prompts for password criteria when user clicks generate password
-function generatePassword(pass) {
+function generatePassword() {
+
+    //gets password length from user prompt
     passLength();
+
+    //asks user for criteria 
     var confirmUpper = confirm("Would you like to include uppercase letters?");
     var confirmLower = confirm("Would you like to include lowercase letters?");
     var confirmNum = confirm("would you like to include numbers?");
     var confirmSpeChar = confirm("Would you like to include special characters?");
-    //if user wants to include uppercase
+    
+    //if user confirms criteria..
+    
     if (confirmUpper) {
-        appendCriteria(upper);
+        var newUpper = upper.split("")
+        passCriteria.push(newUpper);
     }
     if (confirmLower) {
-        appendCriteria(lower);
+        var newLower = lower.split("")
+        passCriteria.push(newLower);
     }
     if (confirmNum) {
-        appendCriteria(num);
+        var newNum = num.split("")
+        passCriteria.push(newNum);
     }
     if (confirmSpeChar) {
-        appendCriteria(NewSpeChar);
+        var newSpeChar = speChar.split("")
+        passCriteria.push(newSpeChar);
     }
-    //takes criteria and randomizes
-    pass = getPass();
+    //return passCriteria;
+
+    //getPass();
     
-}
-var pass = "";
-function getPass (){
-    
-    for (i = 1; i <= length; i++) {
-        var char = Math.floor(Math.random() * charset.length + 1);
-        pass += charset.charAt(char)
-    }
-    return pass;
 }
 
 //this function determines the length of password by user prompt
-var length = 0
-
 function passLength() {
     p = prompt("Please enter length of password: \n**Must be at least 8 characters and no more than 128 characters");
     if (p >= 8 && p < 129) {
@@ -72,15 +66,13 @@ function passLength() {
     }
 }
 
-//this function adds criteria to the generator if confirmed by user
-var charset = ""
-function appendCriteria(criteria) {
-    charset = charset + criteria;
-    return charset;
+function getPass (){
+    
+    
 }
 
-
-
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 
 //when a user clicks generate password
