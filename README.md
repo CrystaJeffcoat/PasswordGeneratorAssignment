@@ -16,4 +16,4 @@ link to webpage: https://crystajeffcoat.github.io/PasswordGeneratorAssignment/
 
 the following image demonstrates the application functionality:
 
-!(./assets/passwordGenerator)
+(./assets/passwordGenerator)
