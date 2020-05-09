@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 var length = 0
 var passCriteria = [];
-
+var char = "";
 //password criteria 
 var lower = "abcdefghijklmnopqrstuvwxyz"
 var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -20,16 +20,20 @@ function writePassword() {
 
 //prompts for password criteria when user clicks generate password
 function generatePassword() {
-
-    //gets password length from user prompt
     passLength();
+    criteria();
+    getPass();
 
-    //asks user for criteria 
+    return char;
+}
+
+//function checks for password criteria
+function criteria() {
     var confirmUpper = confirm("Would you like to include uppercase letters?");
     var confirmLower = confirm("Would you like to include lowercase letters?");
     var confirmNum = confirm("would you like to include numbers?");
     var confirmSpeChar = confirm("Would you like to include special characters?");
-    
+
     //if user confirms criteria..
     if (confirmUpper) {
         var newUpper = upper.split("")
@@ -47,9 +51,7 @@ function generatePassword() {
         var newSpeChar = speChar.split("")
         passCriteria.push(newSpeChar);
     }
-
-    getPass();
-    
+    return passCriteria;
 }
 
 //this function determines the length of password by user prompt
@@ -63,17 +65,18 @@ function passLength() {
         passLength();
     }
 }
-var password = "";
+
+//randomizes all criteria and meets total length of password
 function getPass (){
-    
+    //var char = "";
     for (l = 0; l < length; l++) {
-            for (i = 0; i < passCriteria.length; i++) {
-                if (password.length < length) {
-                password += passCriteria[i][Math.floor(Math.random() * passCriteria[i].length)];
+        for (i = 0; i < passCriteria.length; i++) {
+            if (char.length < length) {
+                char += passCriteria[i][Math.floor(Math.random() * passCriteria[i].length)];
             }
         }
     }
-    return password
+    return char;
 }
 
 // Add event listener to generate button
