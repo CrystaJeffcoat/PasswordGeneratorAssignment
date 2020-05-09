@@ -31,7 +31,6 @@ function generatePassword() {
     var confirmSpeChar = confirm("Would you like to include special characters?");
     
     //if user confirms criteria..
-    
     if (confirmUpper) {
         var newUpper = upper.split("")
         passCriteria.push(newUpper);
@@ -48,9 +47,8 @@ function generatePassword() {
         var newSpeChar = speChar.split("")
         passCriteria.push(newSpeChar);
     }
-    //return passCriteria;
 
-    //getPass();
+    getPass();
     
 }
 
@@ -65,10 +63,17 @@ function passLength() {
         passLength();
     }
 }
-
+var password = "";
 function getPass (){
     
-    
+    for (l = 0; l < length; l++) {
+            for (i = 0; i < passCriteria.length; i++) {
+                if (password.length < length) {
+                password += passCriteria[i][Math.floor(Math.random() * passCriteria[i].length)];
+            }
+        }
+    }
+    return password
 }
 
 // Add event listener to generate button
